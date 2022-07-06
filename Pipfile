@@ -12,6 +12,7 @@ django-allauth = "*"
 pyyaml = "*"
 uritemplate = "*"
 drf-yasg = "*"
+pillow = "*"
 
 [dev-packages]
 

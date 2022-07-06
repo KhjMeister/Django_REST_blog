@@ -1,10 +1,28 @@
-
 from django.urls import path
-from rest_framework.routers import SimpleRouter
-from .views import UserViewSet, PostViewSet
+from .views import (
+    CreatePostAPIView,
+    ListPostAPIView,
+    DetailPostAPIView,
+    CreateCommentAPIView,
+    ListCommentAPIView,
+    DetailCommentAPIView,
+)
 
-router = SimpleRouter()
-router.register('users', UserViewSet, basename='users')
-router.register('', PostViewSet, basename='posts')
+app_name = "api.posts"
 
-urlpatterns = router.urls
+urlpatterns = [
+    path("", ListPostAPIView.as_view(), name="list_post"),
+    path("create/", CreatePostAPIView.as_view(), name="create_post"),
+    path("<str:slug>/", DetailPostAPIView.as_view(), name="post_detail"),
+    path("<str:slug>/comment/", ListCommentAPIView.as_view(), name="list_comment"),
+    path(
+        "<str:slug>/comment/create/",
+        CreateCommentAPIView.as_view(),
+        name="create_comment",
+    ),
+    path(
+        "<str:slug>/comment/<int:id>/",
+        DetailCommentAPIView.as_view(),
+        name="comment_detail",
+    ),
+]

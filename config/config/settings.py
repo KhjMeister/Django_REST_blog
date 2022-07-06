@@ -50,7 +50,9 @@ INSTALLED_APPS = [
     'drf_yasg', # new
 
     # Local
-    'posts',
+    'api',
+    'api.posts',
+    'api.comments',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new

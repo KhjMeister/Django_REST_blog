@@ -1,5 +1,3 @@
-
-
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets # new
 from .models import Post
